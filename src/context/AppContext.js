@@ -5,7 +5,8 @@ const AppContext = React.createContext({
   savedVideos: [],
   deleteVideos: () => {},
   addVideos: () => {},
-  activeRoute: () => {},
+  activeTab: () => {},
+  changeTab: () => {},
 })
 
 export default AppContext
