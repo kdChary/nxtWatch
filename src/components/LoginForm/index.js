@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import {Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
 
 import AppContext from '../../context/AppContext'
@@ -51,10 +52,11 @@ class Login extends Component {
     const data = await response.json()
 
     if (response.ok) {
-      const history = this.props
+      const {history} = this.props
       const jwtToken = data.jwt_token
+      console.log(jwtToken)
 
-      Cookies.set('jwt_token', jwtToken, {expire: 30, path: '/'})
+      Cookies.set('jwt_token', jwtToken, {expires: 30, path: '/'})
 
       history.replace('/')
     } else {
@@ -115,18 +117,24 @@ class Login extends Component {
     </InputContainer>
   )
 
-  renderLoginForm = (isDark, imgUrl) => {
+  renderLoginForm = isDark => {
     const {showError, errorMsg} = this.state
+    const imgUrl = isDark
+      ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
+      : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
 
     return (
       <LoginFormContainer dark={isDark}>
         <AppLogo src={imgUrl} alt="website logo" />
+
         <LoginForm type="login" id="loginForm" onSubmit={this.authorizeUser}>
           {this.renderUsername(isDark)}
           {this.renderPassword(isDark)}
           {this.renderCheckbox(isDark)}
+
           <InputContainer>
             <LoginBtn type="submit">Login</LoginBtn>
+
             {showError && <ErrMsg>*{errorMsg}</ErrMsg>}
           </InputContainer>
         </LoginForm>
@@ -135,21 +143,23 @@ class Login extends Component {
   }
 
   render() {
-    return (
-      <AppContext.Consumer>
-        {value => {
-          const {isDark} = value
-          const imgUrl = isDark
-            ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
-            : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
-          return (
-            <MainContainer dark={isDark}>
-              {this.renderLoginForm(isDark, imgUrl)}
-            </MainContainer>
-          )
-        }}
-      </AppContext.Consumer>
-    )
+    const token = Cookies.get('jwt_token')
+    if (token === undefined) {
+      return (
+        <AppContext.Consumer>
+          {value => {
+            const {isDark} = value
+
+            return (
+              <MainContainer dark={isDark}>
+                {this.renderLoginForm(isDark)}
+              </MainContainer>
+            )
+          }}
+        </AppContext.Consumer>
+      )
+    }
+    return <Redirect to="/" />
   }
 }
 
