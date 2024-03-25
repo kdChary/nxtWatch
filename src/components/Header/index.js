@@ -119,11 +119,19 @@ const Header = props => {
       <NavOptionsList dark={isDark}>
         <NavItem>
           {isDark ? (
-            <NavOptionsBtn dark={isDark} onClick={toggleTheme}>
+            <NavOptionsBtn
+              dark={isDark}
+              onClick={toggleTheme}
+              data-testid="theme"
+            >
               <RiSunFill size="23" />
             </NavOptionsBtn>
           ) : (
-            <NavOptionsBtn dark={isDark} onClick={toggleTheme}>
+            <NavOptionsBtn
+              dark={isDark}
+              onClick={toggleTheme}
+              data-testid="theme"
+            >
               <RiMoonFill size="23" />
             </NavOptionsBtn>
           )}
