@@ -82,8 +82,8 @@ export const PopupMenu = styled.div`
     props.dark ? '0 4px 16px 0 #0f0f0f' : '0 4px 16px 0 #94a3b8'};
 `
 export const PopupBtn = styled.button`
-  //   display: inline-block;
-  background-color: ${props => (props.dark ? '#231f20' : 'transparent')};
+  display: inline-block;
+  background-color: ${props => (props.dark ? '#212121' : 'transparent')};
   border: ${props => (props.dark ? 'solid 1.2px #ffffff' : 'none')};
   border-radius: ${props => (props.dark ? '50%' : '')};
   align-self: flex-end;

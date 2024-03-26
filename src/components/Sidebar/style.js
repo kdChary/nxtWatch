@@ -3,7 +3,7 @@ import styled from 'styled-components'
 /*  Styling nav  */
 export const SideBar = styled.nav`
   width: 212px;
-  height: 90vh;
+  height: 100vh;
 
   display: flex;
   flex-direction: column;
@@ -42,7 +42,7 @@ export const TextContent = styled.p`
   font-family: 'Roboto';
   font-size: 15px;
   font-weight: 500;
-  color: ${props => (props.dark ? '#ffccff' : '#1e293b')};
+  color: ${props => (props.dark ? '#f0fcff' : '#1e293b')};
   line-height: 1.5;
 `
 export const Title = styled(TextContent)`
