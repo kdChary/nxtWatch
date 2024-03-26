@@ -11,8 +11,9 @@ export const LinkItem = styled(Link)`
 /*   Styling List   */
 export const MenuCard = styled.ul`
   padding: 0;
-  height: 155px;
+  height: ${props => (props.pop ? '155px' : '195px')};
   width: ${props => (props.pop ? '90%' : '100%')};
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
