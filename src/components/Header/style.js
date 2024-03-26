@@ -60,7 +60,7 @@ export const NavOptionsBtn = styled.button`
   transition: 1s ease-in-out;
   &:hover {
     rotate: ${props => (props.mn ? '90deg' : '45deg')};
-    color: #ff000f;
+    color: #0fef0f;
   }
   cursor: pointer;
 `
