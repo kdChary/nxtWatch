@@ -12,7 +12,6 @@ export const LinkItem = styled(Link)`
 export const VideoDetails = styled.li`
   list-style-type: none;
   width: 100%;
-  height: 195px;
 
   display: flex;
   flex-direction: column;
@@ -20,6 +19,7 @@ export const VideoDetails = styled.li`
 
   @media (min-width: 576px) {
     width: 175px;
+    height: 195px;
     margin: 5px;
   }
 `
