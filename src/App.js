@@ -5,8 +5,7 @@ import './App.css'
 import AppContext from './context/AppContext'
 import ProtectedRoute from './components/ProtectedRoute'
 import Login from './components/LoginForm'
-// import Home from './components/HomePage'
-import Sidebar from './components/Sidebar'
+import Home from './components/HomePage'
 
 // Replace your code here
 const tabConstants = {
@@ -41,7 +40,7 @@ class App extends Component {
       >
         <Switch>
           <Route path="/login" component={Login} />
-          <ProtectedRoute exact path="/" component={Sidebar} />
+          <ProtectedRoute exact path="/" component={Home} />
         </Switch>
       </AppContext.Provider>
     )

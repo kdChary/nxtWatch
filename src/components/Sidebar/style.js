@@ -13,6 +13,9 @@ export const SideBar = styled.nav`
   background-color: ${props => (props.dark ? '#212121' : '#ffffff')};
   border: none;
   //   border-right: ${props => !props.dark && 'solid 2.2px #94a3b8'};
+  @media (max-width: 767px) {
+    display: none;
+  }
 `
 
 /*  Styling Contact us Section  */

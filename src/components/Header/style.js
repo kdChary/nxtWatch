@@ -82,15 +82,16 @@ export const PopupMenu = styled.div`
     props.dark ? '0 4px 16px 0 #0f0f0f' : '0 4px 16px 0 #94a3b8'};
 `
 export const PopupBtn = styled.button`
-  display: inline-block;
-  background-color: transparent;
-  border: none;
+  //   display: inline-block;
+  background-color: ${props => (props.dark ? '#231f20' : 'transparent')};
+  border: ${props => (props.dark ? 'solid 1.2px #ffffff' : 'none')};
+  border-radius: ${props => (props.dark ? '50%' : '')};
   align-self: flex-end;
   margin: -19px -3px -11px 0;
   transition: 1s ease-in-out;
   font-size: 19px;
   color: ${props => (props.dark ? '#ffffff' : '#231f20')};
-  &:hover&:active {
+  &:hover {
     rotate: y ${props => (props.mn ? '90deg' : '45deg')};
     color: #0fef0f;
   }
