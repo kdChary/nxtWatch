@@ -92,7 +92,7 @@ export const PopupBtn = styled.button`
   color: ${props => (props.dark ? '#ffffff' : '#231f20')};
   &:hover&:active {
     rotate: y ${props => (props.mn ? '90deg' : '45deg')};
-    color: #ff000f;
+    color: #0fef0f;
   }
   cursor: pointer;
 `
@@ -138,8 +138,8 @@ export const NavLogoutBtn = styled.button`
   transition: 1s ease-in-out;
   &:hover {
     // rotate: y -45deg;
-    // color: #ff000f;
-    border: dashed 2px ${props => (props.dark ? '#ffffff' : '#3b82f6')};
+    color: #0fef0f;
+    border: dashed 2px #0fef0f;
     border-style: ;
   }
   cursor: pointer;
