@@ -15,6 +15,7 @@ import VideoItem from '../HomeVideoItem'
 // TODO: CHANGE error views styling.
 
 import {
+  MainContainer,
   ResponsiveContainer,
   AlignNonVideoItems,
   HomeDetailsCard,
@@ -208,7 +209,7 @@ class Home extends Component {
     const isListEmpty = allVideosList.length === 0
 
     return (
-      <HomeDetailsCard dark={isDark} data-testid="home">
+      <HomeDetailsCard dark={isDark}>
         {showBanner && this.renderBanner(isDark)}
         {this.renderSearchFilter(isDark)}
         {isListEmpty ? (
@@ -249,13 +250,13 @@ class Home extends Component {
           const {isDark} = value
 
           return (
-            <>
+            <MainContainer data-testid="home">
               <Header />
-              <ResponsiveContainer dark={isDark} data-testid="home">
+              <ResponsiveContainer dark={isDark}>
                 <Sidebar />
                 {this.successView(isDark)}
               </ResponsiveContainer>
-            </>
+            </MainContainer>
           )
         }}
       </AppContext.Consumer>

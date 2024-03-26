@@ -62,7 +62,7 @@ const Header = props => {
       {close => (
         <PopupMenu dark={isDark} logOut>
           <ConfirmLogoutText dark={isDark}>
-            Are you sure you want to logout?
+            Are you sure, you want to logout?
           </ConfirmLogoutText>
           <AlignPopupBtns>
             <LogoutBtn type="button" onClick={close} outline>

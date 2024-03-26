@@ -8,8 +8,9 @@ export const ResponsiveContainer = styled.div`
   background-color: ${props => (props.dark ? '#181818' : '#f9f9f9')};
   margin: 0;
 `
-export const MainContainer = styled.div`
+export const MainContainer = styled(ResponsiveContainer)`
   margin: 0;
+  flex-direction: column;
 `
 export const AlignNonVideoItems = styled(ResponsiveContainer)`
   // height: {90vh - 108px};
