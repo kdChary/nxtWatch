@@ -9,7 +9,10 @@ import {BiSearchAlt} from 'react-icons/bi'
 import AppContext from '../../context/AppContext'
 import Header from '../Header'
 import Sidebar from '../Sidebar'
+import VideoItem from '../HomeVideoItem'
+
 // TODO: update filter method.
+// TODO: CHANGE error views styling.
 
 import {
   ResponsiveContainer,
@@ -211,7 +214,11 @@ class Home extends Component {
         {isListEmpty ? (
           this.renderEmptySearchView(isDark)
         ) : (
-          <VideosList>Render mee!!!</VideosList>
+          <VideosList>
+            {allVideosList.map(video => (
+              <VideoItem key={video.id} videoData={video} isDark={isDark} />
+            ))}
+          </VideosList>
         )}
       </HomeDetailsCard>
     )

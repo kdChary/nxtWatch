@@ -20,10 +20,10 @@ export const AlignNonVideoItems = styled(ResponsiveContainer)`
 /*  ..Styling Banner section..  */
 export const BannerCard = styled.div`
   width: 100%;
-  height: 148px;
+  height: 158px;
   background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
   background-size: cover;
-  padding: 0 11px;
+  padding: 5px 11px;
   //   border: solid 1px #ef0ce0;
   display: flex;
   justify-content: space-between;
@@ -32,10 +32,10 @@ export const BannerCard = styled.div`
     // height: 297px;
     background-position: center;
   }
+  //   margin-bottom: 15px;
 `
 export const BannerImageCard = styled.div`
   width: 200px;
-  height: 80%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -79,17 +79,18 @@ export const HomeDetailsCard = styled(ResponsiveContainer)`
   flex-direction: column;
 `
 export const VideosList = styled.ul`
-  width: 100%;
+  max-width: 100%;
   padding: 0;
   display: flex;
   flex-direction: column;
-  scroll-behavior: smooth;
-  overflow: auto;
 
-  @media (min-width: 425px) {
+  @media (min-width: 575px) {
     flex-direction: row;
+    justify-content: center;
     flex-wrap: wrap;
   }
+  scroll-behavior: smooth;
+  overflow: auto;
 `
 export const SearchFilter = styled.div`
   width: 300px;
