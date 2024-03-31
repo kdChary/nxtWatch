@@ -38,8 +38,10 @@ const VideoItem = props => {
           <ProfileImgCard>
             <ChannelLogo src={profileUrl} alt="channel logo" />
           </ProfileImgCard>
+
           <VideoItemCard>
             <VideoTitle dark={isDark}>{title}</VideoTitle>
+
             <ChannelCard>
               <ChannelDetails dark={isDark}>{channelName}</ChannelDetails>
               <ChannelDetails sm dark={isDark}>

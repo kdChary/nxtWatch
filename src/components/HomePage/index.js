@@ -67,6 +67,7 @@ class Home extends Component {
 
   fetchVideosData = async (value = '') => {
     this.setState({fetchStatus: apiStatus.inProgress})
+    // const {searchInput} = this.state
     const token = Cookies.get('jwt_token')
 
     const url = `https://apis.ccbp.in/videos/all?search=${value}`
@@ -101,12 +102,12 @@ class Home extends Component {
   }
 
   retryClicked = () => {
-    this.fetchVideosData()
-    this.setState({searchInput: ''})
+    this.setState({searchInput: ''}, this.fetchVideosData)
   }
 
   onClickSearchIcon = () => {
     const {searchInput} = this.state
+
     this.fetchVideosData(searchInput)
   }
 
@@ -143,7 +144,7 @@ class Home extends Component {
         Try different key words or remove search filter
       </ErrorText>
 
-      <RetryBtn type="button" onClick={this.retryClicked}>
+      <RetryBtn type="button" onClick={this.retryClicked} dark={isDark}>
         Retry
       </RetryBtn>
     </EmptySearchCard>
@@ -206,6 +207,9 @@ class Home extends Component {
 
   renderHomePage = isDark => {
     const {showBanner, allVideosList} = this.state
+    // const filteredVideos = allVideosList.filter(video =>
+    //   video.title.toLowerCase().includes(searchInput.toLowerCase()),
+    // )
     const isListEmpty = allVideosList.length === 0
 
     return (

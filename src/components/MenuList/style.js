@@ -39,6 +39,8 @@ export const MenuBtn = styled.button`
   align-items: center;
   font-size: 21px;
   padding-left: 28px;
+  cursor: pointer;
+  transition: 1s ease-in-out;
 `
 export const BtnText = styled.p`
   font-family: 'Roboto';
@@ -46,7 +48,8 @@ export const BtnText = styled.p`
   font-size: ${props => (props.active ? '15px' : '13px')};
   color: ${props =>
     props.dark ? '#ffffff' : props.active ? '#1e293b' : '#616e7c'};
-  font-weight: ${props => (props.active ? '700' : '500')};
-  font-style: ${props => props.active && 'italic'};
+  font-weight: ${props => (props.active ? 'bold' : '500')};
+  //   font-style: ${props => props.active && 'bold'};
   margin-left: 9px;
+  transition: 1s ease-in-out;
 `

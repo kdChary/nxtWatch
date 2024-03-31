@@ -130,6 +130,7 @@ export const SearchBtn = styled.button`
   font-size: 23px;
   color: #64748b;
   transition: 1s ease-in-out;
+  cursor: pointer;
   &:hover {
     color: #ff0b37;
   }
@@ -138,7 +139,7 @@ export const SearchBtn = styled.button`
 /*  ..Styling Error section..  */
 export const ErrorCard = styled.div`
   width: 100%;
-  height: 100vh;
+  //   height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -146,9 +147,13 @@ export const ErrorCard = styled.div`
   align-self: center;
   background-color: transparent;
   //   border: solid 1px #ef0ce0;
+  margin-top: 11px;
 `
 export const ErrorImg = styled.img`
   width: 210px;
+  @media (min-width: 576px) {
+    width: 300px;
+  }
 `
 export const ErrorText = styled.p`
   font-family: 'Roboto';
@@ -157,6 +162,9 @@ export const ErrorText = styled.p`
   line-height: 1.5;
   color: ${props => (props.dark ? '#cbd5e1' : '#7e858e')};
   text-align: center;
+  @media (min-width: 576px) {
+    font-size: 11px;
+  }
 `
 export const ErrorHeading = styled.h3`
   letter-spacing: 0.6px;
@@ -164,6 +172,9 @@ export const ErrorHeading = styled.h3`
   text-align: center;
   color: ${props => (props.dark ? '#feffff' : '#1e293b')};
   margin-bottom: 0;
+  @media (min-width: 576px) {
+    // font-size: 11px;
+  }
 `
 export const RetryBtn = styled.button`
   width: 72px;
@@ -176,6 +187,13 @@ export const RetryBtn = styled.button`
 
   padding: 5px 9px;
   color: #ffffff;
+  cursor: pointer;
+  transition: 1s ease-in-out;
+  &:hover {
+    border: solid 2px #4ffc0f;
+    background-color: transparent;
+    color: #4ffc0f;
+  }
 `
 export const EmptySearchCard = styled(ErrorCard)`
   height: auto;
