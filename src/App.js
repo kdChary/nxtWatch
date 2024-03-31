@@ -6,6 +6,7 @@ import AppContext from './context/AppContext'
 import ProtectedRoute from './components/ProtectedRoute'
 import Login from './components/LoginForm'
 import Home from './components/HomePage'
+import NotFound from './components/NotFoundPage'
 
 // Replace your code here
 const tabConstants = {
@@ -41,6 +42,8 @@ class App extends Component {
         <Switch>
           <Route path="/login" component={Login} />
           <ProtectedRoute exact path="/" component={Home} />
+          <ProtectedRoute exact path="/bad-path" component={NotFound} />
+          <Redirect to="/bad-path" component={NotFound} />
         </Switch>
       </AppContext.Provider>
     )
