@@ -4,7 +4,10 @@ import {Link} from 'react-router-dom'
 /*  ...Styling Link Item...  */
 export const LinkItem = styled(Link)`
   text-decoration: none;
- 
+  margin: 7px 0;
+  @media (min-width: 576px){
+      margin: 7px; 
+  } 
   }
 `
 
@@ -46,6 +49,7 @@ export const VideoTitle = styled.p`
   margin-top: 5px;
   @media (min-width: 576px) {
     font-size: 11px;
+    text-overflow: auto;
   }
 `
 export const ChannelDetails = styled(VideoTitle)`
@@ -62,21 +66,26 @@ export const ChannelDetails = styled(VideoTitle)`
 `
 
 /*  ...Styling Containers...  */
-export const DetailsSection = styled.div`
+export const BottomCard = styled.div`
   display: flex;
-  @media (min-width: 576px) {
+  //   @media (min-width: 576px) {
+  //     flex-direction: column;
+  //   }
+`
+export const ProfileImgCard = styled.div``
+export const ChannelCard = styled.div`
+  display: flex;
+  // flex-direction: column;
+  //   align-items: center;
+  margin: 0;
+  @media screen and (min-width: 576px) {
     flex-direction: column;
   }
 `
-export const ChannelDescriptionSection = styled.div`
-  display: flex;
-  // flex-direction: column;
-  align-items: center;
-  margin: 0;
-`
-export const AlignDetails = styled.div`
+export const VideoItemCard = styled.div`
   display: flex;
   margin: 0;
-  align-items: center;
-  margin-bottom: 3px;
+  flex-direction: column;
+  //   align-items: center;
+  margin-bottom: 5px;
 `

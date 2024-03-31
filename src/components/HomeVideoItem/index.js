@@ -7,10 +7,11 @@ import {
   Thumbnail,
   ChannelLogo,
   VideoTitle,
+  BottomCard,
+  ProfileImgCard,
+  ChannelCard,
+  VideoItemCard,
   ChannelDetails,
-  DetailsSection,
-  ChannelDescriptionSection,
-  AlignDetails,
 } from './style'
 
 const VideoItem = props => {
@@ -33,32 +34,24 @@ const VideoItem = props => {
       <VideoDetails>
         <Thumbnail src={thumbnailUrl} alt="video thumbnail" />
 
-        <ChannelDescriptionSection>
-          <ChannelLogo src={profileUrl} alt="channel logo" />
-
-          <div>
+        <BottomCard>
+          <ProfileImgCard>
+            <ChannelLogo src={profileUrl} alt="channel logo" />
+          </ProfileImgCard>
+          <VideoItemCard>
             <VideoTitle dark={isDark}>{title}</VideoTitle>
-
-            <DetailsSection>
-              <ChannelDetails>{channelName}</ChannelDetails>
-
-              <AlignDetails>
-                <ChannelDetails dark={isDark} sm>
-                  <BsDot size="21" />
-                  {`${views} views`}
-                </ChannelDetails>
-                <ChannelDetails dark={isDark} lg>
-                  {`${views} views`}
-                </ChannelDetails>
-
-                <ChannelDetails dark={isDark}>
-                  <BsDot size="21" />
-                  {published}
-                </ChannelDetails>
-              </AlignDetails>
-            </DetailsSection>
-          </div>
-        </ChannelDescriptionSection>
+            <ChannelCard>
+              <ChannelDetails dark={isDark}>{channelName}</ChannelDetails>
+              <ChannelDetails sm dark={isDark}>
+                <BsDot size="17" /> {`${views}views`} <BsDot size="17" />{' '}
+                {published}
+              </ChannelDetails>
+              <ChannelDetails lg dark={isDark}>
+                {`${views}views`} <BsDot size="17" /> {published}
+              </ChannelDetails>
+            </ChannelCard>
+          </VideoItemCard>
+        </BottomCard>
       </VideoDetails>
     </LinkItem>
   )
