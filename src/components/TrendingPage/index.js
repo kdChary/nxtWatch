@@ -132,6 +132,24 @@ class TrendingVideos extends Component {
     )
   }
 
+  renderTrendingPage = isDark => {
+    const {fetchStatus} = this.state
+
+    switch (fetchStatus) {
+      case apiStatus.inProgress:
+        return <>{this.renderLoadingView(isDark)}</>
+
+      case apiStatus.success:
+        return <>{this.renderTrendingVideos(isDark)}</>
+
+      case apiStatus.failure:
+        return <>{this.renderErrorView(isDark)}</>
+
+      default:
+        return null
+    }
+  }
+
   render() {
     return (
       <AppContext.Consumer>
@@ -143,7 +161,7 @@ class TrendingVideos extends Component {
               <Header />
               <ResponsiveContainer dark={isDark}>
                 <Sidebar />
-                {this.renderTrendingVideos(isDark)}
+                {this.renderTrendingPage(isDark)}
               </ResponsiveContainer>
             </MainContainer>
           )

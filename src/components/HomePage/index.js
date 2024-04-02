@@ -86,7 +86,7 @@ class Home extends Component {
       const modifiedData = data.videos.map(video =>
         this.modifyFetchedData(video),
       )
-      console.log(modifiedData)
+      //   console.log(modifiedData)
       this.setState({allVideosList: modifiedData})
     } else {
       this.setState({fetchStatus: apiStatus.failure})
