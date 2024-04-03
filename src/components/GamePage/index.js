@@ -1,7 +1,7 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
-import {HiFire} from 'react-icons/hi'
+import {SiYoutubegaming} from 'react-icons/si'
 
 import {
   ResponsiveContainer,
@@ -19,7 +19,7 @@ import {
   BannerText,
 } from './style'
 import AppContext from '../../context/AppContext'
-import TrendingItem from '../TrendingItem'
+import GamingItem from '../GameVideoItem'
 import Header from '../Header'
 import Sidebar from '../Sidebar'
 
@@ -30,11 +30,11 @@ const apiStatus = {
   failure: 'FAILURE',
 }
 
-class TrendingVideos extends Component {
-  state = {trendingList: [], fetchStatus: apiStatus.initial}
+class GamingVideos extends Component {
+  state = {gamingVideosList: [], fetchStatus: apiStatus.initial}
 
   componentDidMount() {
-    this.getTrendingVideos()
+    this.getGamingVideos()
   }
 
   retryClicked = () => {
@@ -42,18 +42,15 @@ class TrendingVideos extends Component {
   }
 
   modifyFetchedData = data => ({
-    channelName: data.channel.name,
-    profileUrl: data.channel.profile_image_url,
     id: data.id,
-    publishedAt: data.published_at,
     thumbnailUrl: data.thumbnail_url,
     title: data.title,
     views: data.view_count,
   })
 
-  getTrendingVideos = async () => {
+  getGamingVideos = async () => {
     this.setState({fetchStatus: apiStatus.inProgress})
-    const url = 'https://apis.ccbp.in/videos/trending'
+    const url = 'https://apis.ccbp.in/videos/gaming'
     const token = Cookies.get('jwt_token')
 
     const options = {
@@ -64,15 +61,15 @@ class TrendingVideos extends Component {
     }
 
     const response = await fetch(url, options)
-    const data = await response.json()
 
     if (response.ok) {
       this.setState({fetchStatus: apiStatus.success})
+      const data = await response.json()
 
       const modifiedData = data.videos.map(itemData =>
         this.modifyFetchedData(itemData),
       )
-      this.setState({trendingList: modifiedData})
+      this.setState({gamingVideosList: modifiedData})
 
       //   console.log(data)
     } else {
@@ -112,27 +109,27 @@ class TrendingVideos extends Component {
     )
   }
 
-  renderTrendingVideos = isDark => {
-    const {trendingList} = this.state
+  renderGamingVideos = isDark => {
+    const {gamingVideosList} = this.state
 
     return (
       <TrendingSection dark={isDark}>
         <BannerCard dark={isDark} data-testid="banner">
           <IconCard dark={isDark}>
-            <HiFire size="32" color="#ff0b37" />
+            <SiYoutubegaming size="32" color="#ff0b37" />
           </IconCard>
-          <BannerText dark={isDark}>Trending</BannerText>
+          <BannerText dark={isDark}>Gaming</BannerText>
         </BannerCard>
         <VideosList>
-          {trendingList.map(video => (
-            <TrendingItem key={video.id} videoData={video} isDark={isDark} />
+          {gamingVideosList.map(video => (
+            <GamingItem key={video.id} videoData={video} isDark={isDark} />
           ))}
         </VideosList>
       </TrendingSection>
     )
   }
 
-  renderTrendingPage = isDark => {
+  renderGamingPage = isDark => {
     const {fetchStatus} = this.state
 
     switch (fetchStatus) {
@@ -140,7 +137,7 @@ class TrendingVideos extends Component {
         return <>{this.renderLoadingView(isDark)}</>
 
       case apiStatus.success:
-        return <>{this.renderTrendingVideos(isDark)}</>
+        return <>{this.renderGamingVideos(isDark)}</>
 
       case apiStatus.failure:
         return <>{this.renderErrorView(isDark)}</>
@@ -157,11 +154,11 @@ class TrendingVideos extends Component {
           const {isDark} = value
 
           return (
-            <MainContainer dark={isDark} data-testid="trending">
+            <MainContainer dark={isDark} data-testid="gaming">
               <Header />
               <ResponsiveContainer dark={isDark}>
                 <Sidebar />
-                {this.renderTrendingPage(isDark)}
+                {this.renderGamingPage(isDark)}
               </ResponsiveContainer>
             </MainContainer>
           )
@@ -170,4 +167,4 @@ class TrendingVideos extends Component {
     )
   }
 }
-export default TrendingVideos
+export default GamingVideos

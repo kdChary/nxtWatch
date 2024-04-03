@@ -8,6 +8,7 @@ import Login from './components/LoginForm'
 import Home from './components/HomePage'
 import NotFound from './components/NotFoundPage'
 import TrendingVideos from './components/TrendingPage'
+import GamingVideos from './components/GamePage'
 
 // Replace your code here
 const tabConstants = {
@@ -45,6 +46,7 @@ class App extends Component {
           <ProtectedRoute exact path="/" component={Home} />
           <ProtectedRoute exact path="/bad-path" component={NotFound} />
           <ProtectedRoute exact path="/trending" component={TrendingVideos} />
+          <ProtectedRoute exact path="/gaming" component={GamingVideos} />
           <Redirect to="/bad-path" component={NotFound} />
         </Switch>
       </AppContext.Provider>
