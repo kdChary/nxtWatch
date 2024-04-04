@@ -3,7 +3,7 @@ import styled from 'styled-components'
 /*  Styling nav  */
 export const SideBar = styled.nav`
   width: 212px;
-  height: 90vh;
+  min-height: 90vh;
 
   display: flex;
   flex-direction: column;

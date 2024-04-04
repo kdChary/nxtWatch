@@ -1,0 +1,28 @@
+.player {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.line {
+  height: 3px;
+  width: 97%;
+  /* margin: 0 auto; */
+  border: 0;
+  border-top: solid 1.3px #64748b;
+  align-self: center;
+}
+.bottom-card {
+  margin-bottom: 23px;
+}
+
+.channel-logo-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-left: 9px;
+}
+.channel-details {
+  width: 90%;
+  /* border: solid 1px green; */
+}

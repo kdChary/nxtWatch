@@ -9,9 +9,11 @@ import Home from './components/HomePage'
 import NotFound from './components/NotFoundPage'
 import TrendingVideos from './components/TrendingPage'
 import GamingVideos from './components/GamePage'
+import VideoItemDetails from './components/VideoItemDetails'
 
 // Replace your code here
 const tabConstants = {
+  initial: 'INITIAL',
   home: 'HOME',
   gaming: 'GAMING',
   trending: 'TRENDING',
@@ -19,7 +21,7 @@ const tabConstants = {
 }
 
 class App extends Component {
-  state = {isDark: false, savedVideos: [], activeTab: tabConstants.home}
+  state = {isDark: false, savedVideos: [], activeTab: tabConstants.initial}
 
   toggleTheme = () => {
     this.setState(prevState => ({isDark: !prevState.isDark}))
@@ -27,6 +29,25 @@ class App extends Component {
 
   changeTab = value => {
     this.setState({activeTab: value})
+  }
+
+  deleteVideos = index => {
+    const {savedVideos} = this.state
+    const modifiedVideos = savedVideos.splice(index, 1)
+    this.setState({savedVideos: modifiedVideos})
+  }
+
+  addVideos = data => {
+    const {savedVideos} = this.state
+    const index = savedVideos.findIndex(video => data.id === video.id)
+
+    if (index > -1) {
+      this.deleteVideos(index)
+    } else {
+      this.setState(prevState => ({
+        savedVideos: [...prevState.savedVideos, data],
+      }))
+    }
   }
 
   render() {
@@ -39,6 +60,8 @@ class App extends Component {
           activeTab,
           toggleTheme: this.toggleTheme,
           changeTab: this.changeTab,
+          addVideos: this.addVideos,
+          deleteVideos: this.deleteVideos,
         }}
       >
         <Switch>
@@ -47,6 +70,11 @@ class App extends Component {
           <ProtectedRoute exact path="/bad-path" component={NotFound} />
           <ProtectedRoute exact path="/trending" component={TrendingVideos} />
           <ProtectedRoute exact path="/gaming" component={GamingVideos} />
+          <ProtectedRoute
+            exact
+            path="/videos/:id"
+            component={VideoItemDetails}
+          />
           <Redirect to="/bad-path" component={NotFound} />
         </Switch>
       </AppContext.Provider>
