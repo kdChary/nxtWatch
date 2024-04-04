@@ -1,4 +1,3 @@
-import {formatDistanceToNow} from 'date-fns'
 import {BsDot} from 'react-icons/bs'
 
 import {
@@ -18,25 +17,22 @@ const VideoItem = props => {
   const {videoData, isDark} = props
   const {
     channelName,
-    profileUrl,
+    channelLogo,
     id,
-    publishedAt,
-    thumbnailUrl,
+    published,
+    thumbnail,
     title,
     views,
   } = videoData
-  const published = formatDistanceToNow(new Date(publishedAt), {
-    addSuffix: true,
-  })
 
   return (
     <LinkItem to={`/videos/${id}`}>
       <VideoDetails>
-        <Thumbnail src={thumbnailUrl} alt="video thumbnail" />
+        <Thumbnail src={thumbnail} alt="video thumbnail" />
 
         <BottomCard>
           <ProfileImgCard>
-            <ChannelLogo src={profileUrl} alt="channel logo" />
+            <ChannelLogo src={channelLogo} alt="channel logo" />
           </ProfileImgCard>
 
           <VideoItemCard>

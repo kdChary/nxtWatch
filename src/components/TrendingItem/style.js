@@ -32,6 +32,7 @@ export const VideoDetails = styled.li`
 /*  ...Styling Images...  */
 export const Thumbnail = styled.img`
   width: 100%;
+  height: 177.39px;
   @media (min-width: 576px) {
     width: 50%;
   }

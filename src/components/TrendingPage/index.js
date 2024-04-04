@@ -1,5 +1,7 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+
+import {formatDistanceToNow} from 'date-fns'
 import Loader from 'react-loader-spinner'
 import {HiFire} from 'react-icons/hi'
 
@@ -43,10 +45,12 @@ class TrendingVideos extends Component {
 
   modifyFetchedData = data => ({
     channelName: data.channel.name,
-    profileUrl: data.channel.profile_image_url,
+    channelLogo: data.channel.profile_image_url,
     id: data.id,
-    publishedAt: data.published_at,
-    thumbnailUrl: data.thumbnail_url,
+    published: formatDistanceToNow(new Date(data.published_at), {
+      addSuffix: true,
+    }),
+    thumbnail: data.thumbnail_url,
     title: data.title,
     views: data.view_count,
   })

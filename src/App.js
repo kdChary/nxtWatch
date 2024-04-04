@@ -10,6 +10,7 @@ import NotFound from './components/NotFoundPage'
 import TrendingVideos from './components/TrendingPage'
 import GamingVideos from './components/GamePage'
 import VideoItemDetails from './components/VideoItemDetails'
+import SavedVideos from './components/SavedVideos'
 
 // Replace your code here
 const tabConstants = {
@@ -75,6 +76,7 @@ class App extends Component {
             path="/videos/:id"
             component={VideoItemDetails}
           />
+          <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
           <Redirect to="/bad-path" component={NotFound} />
         </Switch>
       </AppContext.Provider>
