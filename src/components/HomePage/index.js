@@ -192,6 +192,7 @@ class Home extends Component {
           type="search"
           value={searchInput}
           onChange={this.onChangeSearchInput}
+          placeholder="Search"
         />
         <SearchBtn
           dark={isDark}
